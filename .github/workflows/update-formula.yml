@@ -1,0 +1,37 @@
+name: Update Formula
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (without v prefix)'
+        required: true
+        type: string
+      formula:
+        description: 'Formula name'
+        required: true
+        type: string
+
+jobs:
+  update-formula:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout tap repository
+        uses: actions/checkout@v4
+
+      - name: Update formula with new version and SHA256
+        run: |
+          chmod +x .github/scripts/update-formula.sh
+          FORMULA="${{ github.event.inputs.formula }}" \
+          VERSION="${{ github.event.inputs.version }}" \
+          .github/scripts/update-formula.sh
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add Formula/${{ github.event.inputs.formula }}.rb
+          git commit -m "Update ${{ github.event.inputs.formula }} to version ${{ github.event.inputs.version }}"
+          git push origin main
