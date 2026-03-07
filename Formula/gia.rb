@@ -1,15 +1,15 @@
 class Gia < Formula
   desc "GIA - General Intelligence Assistant"
   homepage "https://github.com/panjamo/gia"
-  version "0.1.208"
+  version "0.1.210"
   license "MIT"
 
   if Hardware::CPU.intel?
-    url "https://github.com/panjamo/gia/releases/download/v0.1.208/gia-macos-x86_64-v0.1.208.tar.gz"
-    sha256 "825d98a4be5b88c6f7837485eef3beee588772a09c73e3c6b7e11d4636fa0c9b"
+    url "https://github.com/panjamo/gia/releases/download/v0.1.210/gia-macos-x86_64-v0.1.210.tar.gz"
+    sha256 "a1bd5f577f5c1fe5f1821da779b9c364b0839c34fd7076593ccdff32ce5d8b53"
   else
-    url "https://github.com/panjamo/gia/releases/download/v0.1.208/gia-macos-aarch64-v0.1.208.tar.gz"
-    sha256 "e1c7ead6b02e0c3c2d6ffd7beb7e152a580b803f829a703b171372cf8b87fc48"
+    url "https://github.com/panjamo/gia/releases/download/v0.1.210/gia-macos-aarch64-v0.1.210.tar.gz"
+    sha256 "80c5c2d8401cca9c8a3747408a5259b6c0d01245c8e6cfee69c7742eb809ea96"
   end
 
   def install
